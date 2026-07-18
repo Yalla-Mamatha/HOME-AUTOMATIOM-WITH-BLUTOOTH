@@ -1,0 +1,39 @@
+// CODTECH Internship - Task 2: Smart Traffic Light System
+
+const int redLED = 11;    // Red LED connected to Digital Pin 11
+const int yellowLED = 10; // Yellow LED connected to Digital Pin 10
+const int greenLED = 9;   // Green LED connected to Digital Pin 9
+
+void setup() {
+  // Set all LED pins as OUTPUT
+  pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+  
+  // Initialize Serial Monitor
+  Serial.begin(9600);
+  Serial.println("--- Traffic Light Automation System Ready ---");
+}
+
+void loop() {
+  // 1. RED LIGHT ON (Stop)
+  Serial.println("Status: RED LIGHT ON - STOP");
+  digitalWrite(redLED, HIGH);   // Turn ON Red
+  digitalWrite(yellowLED, LOW); // Turn OFF Yellow
+  digitalWrite(greenLED, LOW);  // Turn OFF Green
+  delay(3000);                  // Keep it ON for 3 seconds
+
+  // 2. YELLOW LIGHT ON (Get Ready)
+  Serial.println("Status: YELLOW LIGHT ON - GET READY");
+  digitalWrite(redLED, LOW);
+  digitalWrite(yellowLED, HIGH); // Turn ON Yellow
+  digitalWrite(greenLED, LOW);
+  delay(1000);                  // Keep it ON for 1 second
+
+  // 3. GREEN LIGHT ON (Go)
+  Serial.println("Status: GREEN LIGHT ON - GO");
+  digitalWrite(redLED, LOW);
+  digitalWrite(yellowLED, LOW);
+  digitalWrite(greenLED, HIGH);  // Turn ON Green
+  delay(3000);                  // Keep it ON for 3 seconds
+}
